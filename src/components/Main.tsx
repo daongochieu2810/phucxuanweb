@@ -8,7 +8,7 @@ import Homepage from "../components/Home/Homepage";
 import AboutUsPage from "../components/AboutUs/AboutUsePage";
 import BrandsPage from "../components/Brands/BrandsPage";
 import ContactUs from "../components/ContactUs/ContactUsPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: "Home", url: "/home" },
+  { title: "Home", url: "/" },
   { title: "About Us", url: "/aboutus" },
   { title: "Brands", url: "/brands" },
   { title: "Contact Us", url: "/contactus" },
@@ -37,10 +37,10 @@ export default function Main() {
       <Container maxWidth="lg">
         <Header title="Phuc Xuan" sections={sections} />
         <main className={classes.mainPage}>
-          <Router>
+          <Router basename="/">
             <div>
               <Switch>
-                <Route path="/home">
+                <Route exact path="/">
                   <Homepage />
                 </Route>
                 <Route path="/aboutus">

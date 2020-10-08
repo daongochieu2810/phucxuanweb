@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
+import { Link, HashRouter as Router } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -51,19 +51,14 @@ export default function Header(props: HeaderProps) {
         className={classes.toolbarSecondary}
       >
         {sections.map((section) => (
-          <Link
-            color={section.url === currRoute ? "primary" : "inherit"}
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            className={classes.toolbarLink}
-            onClick={() => {
-                setCurrRoute(section.url);
-            }}
-          >
-            {section.title}
-          </Link>
+          <Router basename="/">
+            <Link
+              to={section.url}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {section.title}
+            </Link>
+          </Router>
         ))}
       </Toolbar>
     </React.Fragment>
